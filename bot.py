@@ -10,7 +10,8 @@ import os
 import platform
 import random
 import sys
-
+import request
+import json
 import discord
 import yaml
 from discord.ext import commands, tasks
@@ -21,7 +22,7 @@ if not os.path.isfile("config.yaml"):
 else:
     with open("config.yaml") as file:
         config = yaml.load(file, Loader=yaml.FullLoader)
-
+webhook_url = ''
 """	
 Setup bot intents (events restrictions)
 For more information about intents, please go to the following websites:
@@ -57,7 +58,7 @@ intents = discord.Intents.default()
 bot = Bot(command_prefix=config["bot_prefix"], intents=intents)
 
 
-# The code in this even is executed when the bot is ready
+# The code in this event is executed when the bot is ready
 @bot.event
 async def on_ready():
     print(f"Logged in as {bot.user.name}")
@@ -66,7 +67,10 @@ async def on_ready():
     print(f"Running on: {platform.system()} {platform.release()} ({os.name})")
     print("-------------------")
     status_task.start()
-
+    channel = bot.get_channel(insertchannelid)
+    if not 
+async def on_member_join(member):
+    channel = bot.get_channel(insertchannelid)
 
 # Setup the game status task of the bot
 @tasks.loop(minutes=1.0)
